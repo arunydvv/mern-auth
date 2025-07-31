@@ -6,6 +6,7 @@ import { assets } from "../../assets/assets";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  // const [first, setfirst] = useState(second)
 
   return (
     <div className="login-main">
@@ -55,7 +56,9 @@ const Login = () => {
               </div>
               <div className="login-center-buttons">
                 <button type="button">Log In</button>
-                <button type="button">
+                
+
+                <button type="button" className="p-5 ">
                   <img src={assets.GoogleSvg} alt="" />
                   Log In with Google
                 </button>

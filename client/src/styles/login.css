@@ -95,6 +95,7 @@ form input[type='text']
   outline: none;
 }
 
+
 form button[type='button'] {
   width: 100%;
   padding: 16px;
@@ -104,6 +105,7 @@ form button[type='button'] {
   cursor: pointer;
   border-radius: 30px;
   font-weight: 600;
+  
 }
 
 
