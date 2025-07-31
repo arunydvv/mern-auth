@@ -1,19 +1,25 @@
 import { assets } from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
 
-
 const Navbar = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
   return (
-    <div className="flex items-center justify-between px-20 py-2 shadow">
-      <img src={assets.logo} alt="Logo" className="w-28 sm:w-32" />
+    <header className="flex items-center  justify-between px-16 py-12 shadow-md bg-white">
+      <img
+        src={assets.logo}
+        alt="Logo"
+        className="w-48 sm:w-36 cursor-pointer"
+        onClick={() => navigate("/")}
+      />
       <button
         onClick={() => navigate("/login")}
-        className="flex items-center gap-2 border border-gray-500 rounded-full px-6 py-2 text-gray-800 hover:bg-gray-100 "
+        className="flex items-center gap-3 border border-gray-400 rounded-full px-8 py-3 text-gray-800 hover:bg-gray-100 transition duration-200"
       >
-        Login <img src={assets.arrow_icon} alt="" />
+        <span className="text-xl font-semibold">Login</span>
+        <img src={assets.arrow_icon} alt="arrow" className="w-5" />
       </button>
-    </div>
+    </header>
   );
 };
 
