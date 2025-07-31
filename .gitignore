@@ -1,0 +1,58 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+
+# OS junk files
+.DS_Store
+Thumbs.db
+
+# Build output
+dist/
+build/
+
+# VS Code settings
+.vscode/
+
+# IDEs
+.idea/
+*.sw?
+
+# MongoDB
+dump/
+
+# Coverage
+coverage/
+
+# Client-specific
+/client/node_modules/
+/client/.next/
+/client/build/
+/client/dist/
+/client/.env*
+
+# Server-specific
+/server/node_modules/
+/server/dist/
+/server/.env*
+
+# PM2 logs (if used)
+/server/pids/
+/server/logs/
+
+# Optional: Ignore uploads or static data folders (if any)
+/server/uploads/
+/server/public/uploads/
