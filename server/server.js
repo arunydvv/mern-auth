@@ -23,7 +23,10 @@ app.use(cors({
 
 
 app.get('/', (req, res) => {
-    res.send("Hello world");
+  res.json({
+    success: true,
+    message : 'API is working fine'
+    })
 })
 
 app.use('/api/v1/auth', authRouter )

@@ -147,11 +147,14 @@ form button[type='button'] {
   background-color: black;
   color: white;
   border: 3px solid black;
+  transition: background-color 0.3s ease;
 }
 
 .login-center-buttons button:nth-child(1):hover{
-  color: #333;
-  background-color: white;
+  color: white;
+  background-color: #333; 
+  border: 3px solid #333;
+
 }
 
 .login-center-buttons button:nth-child(2){
@@ -160,6 +163,7 @@ form button[type='button'] {
   justify-content: center;
   align-items: center;
   column-gap: 10px;
+  transition: background-color 0.3s ease;
 }
 
 .login-center-buttons button:nth-child(2) img{
@@ -167,7 +171,7 @@ form button[type='button'] {
 }
 
 .login-center-buttons button:nth-child(2):hover{
-  background-color: #c4c4c457;
+  background-color: #bab7b757;
 }
 
 .login-bottom-p{
