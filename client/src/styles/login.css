@@ -96,16 +96,15 @@ form input[type='text']
 }
 
 
+form button[type='submit'],
 form button[type='button'] {
   width: 100%;
   padding: 16px;
   border: none;
-  border-radius: 4px;
+  border-radius: 30px;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 30px;
   font-weight: 600;
-  
 }
 
 

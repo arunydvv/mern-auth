@@ -1,11 +1,52 @@
-import React, { useEffect, useState } from "react";
-import { FaEye } from "react-icons/fa6";
-import { FaEyeSlash } from "react-icons/fa6";
+import React, { useContext, useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { assets } from "../../assets/assets";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "@/context/appContext";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { backendUrl, setIsLoggedIn } = useContext(AppContext);
+
   const [showPassword, setShowPassword] = useState(false);
-  const [state, setState] = useState("Log In"); 
+  const [mode, setMode] = useState("Log In");
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    const endpoint = `${backendUrl}/api/v1/auth/${
+      mode === "Sign Up" ? "register" : "login"
+    }`;
+
+    try {
+      console.log("Sign Up" ? { name, email, password } : { email, password });
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(
+          mode === "Sign Up" ? { name, email, password } : { email, password }
+        ),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setIsLoggedIn(true);
+        localStorage.setItem("token", data.token);
+        navigate("/");
+      } else {
+        setError(data.message || "Something went wrong");
+      }
+    } catch (err) {
+      setError("Server error");
+    }
+  };
 
   return (
     <div className="login-main">
@@ -20,19 +61,32 @@ const Login = () => {
           <div className="login-center">
             <h2>Welcome back!</h2>
             <p>Please enter your details</p>
-            <form>
-              {state === "Sign Up" && (
-                <input type="email" placeholder="Name" />
+
+            <form onSubmit={handleSubmit}>
+              {mode === "Sign Up" && (
+                <input
+                  type="text"
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               )}
 
-              {/* If the one above is "Sign Up" email, you may want to make this one "Username" or remove it */}
-              <input type="email" placeholder="Email" />
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
 
               <div className="pass-input-div">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
+
                 {showPassword ? (
                   <FaEyeSlash onClick={() => setShowPassword(!showPassword)} />
                 ) : (
@@ -51,9 +105,10 @@ const Login = () => {
                   Forgot password?
                 </a>
               </div>
+
               <div className="login-center-buttons">
-                <button type="button">
-                  {state === "Sign Up" ? `Sign Up` : `Log In`}
+                <button type="submit">
+                  {mode === "Sign Up" ? `Sign Up` : `Log In`}
                 </button>
 
                 <button type="button" className="p-5">
@@ -61,17 +116,16 @@ const Login = () => {
                   Log In with Google
                 </button>
               </div>
+             
             </form>
           </div>
 
           <p className="login-bottom-p">
             <button
               type="button"
-              onClick={() =>
-                setState(state === "Sign Up" ? "Login" : "Sign Up")
-              }
+              onClick={() => setMode(mode === "Sign Up" ? "Log In" : "Sign Up")}
             >
-              {state === "Sign Up" ? (
+              {mode === "Sign Up" ? (
                 <>
                   Already have an account? <a href="#">Login</a>
                 </>

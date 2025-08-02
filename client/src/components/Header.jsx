@@ -6,8 +6,8 @@ const Header = () => {
   return (
     <div className="relative w-full min-h-[75vh] overflow-hidden flex items-center justify-center px-6 bg-white">
       <div className="text-center max-w-5xl">
-        {/* <h1 className="text-5xl sm:text-7xl font-extrabold text-gray-800 leading-tight mb-4"></h1> */}
-        <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance">
+
+        <h1 className="scroll-m-20 text-center text-7xl p-2 font-extrabold tracking-tight text-balance">
           Welcome to Our App
         </h1>
 
