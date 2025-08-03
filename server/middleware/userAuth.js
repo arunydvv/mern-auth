@@ -1,3 +1,5 @@
+// This checks if token is present or not
+
 import jwt from "jsonwebtoken";
 
 const userAuth = async (req, res, next) => {
